@@ -4,16 +4,18 @@ var cargarPagina = function () {
 };
 
 var cargarPersonajes = function () {
+   
     $.ajax('https://swapi.co/api/people/',{
         method: 'GET',
         dataType: 'json',
         success: function (response) {
                 var personajes = response.results; //verificar API mediante postman para verificar donde estan almacenados los datos
-                /*var $ul = $('#personajes');
+                $('#total').text(total);
+                var $ul = $('#personajes');
                 personajes.forEach( function (personaje) {
                     var $li =  $("<li />");
-                    $li.text(personaje.name);
-                    $ul.append($li);*/
+                    $li.text(personaje.name + '-' + personajes.height + 'cm' );
+                    $ul.append($li);
                 });
         },
         error: function (error) {
@@ -21,5 +23,6 @@ var cargarPersonajes = function () {
         }
     });
 };
+
 
 $(document).ready(cargarPagina);
